@@ -1,10 +1,13 @@
-
-  <header>
+<?php 
+  include "config.php";
+  $user = $_SESSION['user'];
+?>
+<header>
       <nav>
-      <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
+      <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo $user['username']?></a>
       <div class="dropdown-menu" aria-labelledby="dropdownId">
-        <a class="dropdown-item" href="login.php">Đăng nhập</a>
-        <a class="dropdown-item" href="register.php">Đăng ký</a>
+        <a class="dropdown-item" href="#">Tài khoản</a>
+        <a class="dropdown-item" href="logout.php">Đăng xuất</a>
       </div>
         <ul class="nav-links">
           <li>
@@ -28,4 +31,3 @@
          </div>
       </nav>
     </header>
-    
