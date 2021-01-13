@@ -2,25 +2,25 @@
   <nav>
     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
     <div class="dropdown-menu" aria-labelledby="dropdownId">
-      <a class="dropdown-item" href="#">Tài khoản</a>
-      <a class="dropdown-item" href="user.php">Quản lý người dùng</a>
+      <a class="dropdown-item" href="account.php">Tài khoản</a>
+      <a class="dropdown-item" href="ql-user.php">Quản lý người dùng</a>
       <a class="dropdown-item" href="logout.php">Đăng xuất</a>
     </div>
     <ul class="nav-links">
       <li>
-        <a href="index.php"><i class="fas fa-home"></i>Home</a>
+        <a href="admin-page.php"><i class="fas fa-home"></i>Home</a>
       </li>
       <li>
-        <a href="about.php"><i class="fas fa-camera-retro"></i>About</a>
+        <a href="admin-about.php"><i class="fas fa-camera-retro"></i>About</a>
       </li>
       <li>
-        <a href="resume.php"><i class="far fa-address-card"></i>Resume</a>
+        <a href="admin-resume.php"><i class="far fa-address-card"></i>Resume</a>
       </li>
       <li>
-        <a href="work.php"><i class="fas fa-briefcase"></i>works</a>
+        <a href="admin-work.php"><i class="fas fa-briefcase"></i>works</a>
       </li>
       <li>
-        <a href="blog.php"><i class="fas fa-blog"></i>Blog</a>
+        <a href="admin-blog.php"><i class="fas fa-blog"></i>Blog</a>
       </li>
     </ul>
       <div class="burger">
