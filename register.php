@@ -8,17 +8,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   </head>
   <body>
   <style>
     body{
-        background: pink
-    }
-    .card{
-        background: black
-    }
-    .form-group label{
-        color: pink
+        background:  rgb(240, 222, 225);
     }
     .btn{
         background: pink
@@ -87,6 +82,7 @@
             <div class="col-lg-6 m-auto">
                 <div class="card mt-5">
                     <div class="card-title mt-5">
+                    <a class="btn btn-success" href="index.php"><i class="fas fa-undo"></i> Trở lại</a>
                     <h1 class ="text-center py-3"> Đăng ký </h1>
                     <div class="card-body">
                     <form action="" method ="POST">
@@ -146,7 +142,8 @@
                                 <span> <?php echo (isset($err["rpwd"]))? $err["rpwd"]:''  ?> </span>
                             </div>
                         </div>
-                        <button type="submit" class="btn" name="add">Đăng ký</button>
+                        <button type="submit" class="btn btn-success" name="add">Đăng ký</button>
+                        <p>Bạn đã có tài khoản? <a href="login.php">Đăng nhập</a></p>
                         <br> 
                     </form>
                     </div>

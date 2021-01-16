@@ -1,5 +1,6 @@
 <?php
-include "config.php";
+include "user-header.php";
+
 if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 0))
 { header("Location: login.php");
   exit();
@@ -23,9 +24,7 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 0))
     <link rel="stylesheet" href="css/footer.css">
   </head>
   <body>
-    <?php
-      include "user-header.php";
-    ?>
+
     <main>
       <div class="container">
       <div class="avatar">

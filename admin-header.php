@@ -2,7 +2,7 @@
   <nav>
     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
     <div class="dropdown-menu" aria-labelledby="dropdownId">
-      <a class="dropdown-item" href="account.php">Tài khoản</a>
+    <a class="dropdown-item" href="re-user.php">Đổi mật khẩu</a>
       <a class="dropdown-item" href="ql-user.php">Quản lý người dùng</a>
       <a class="dropdown-item" href="logout.php">Đăng xuất</a>
     </div>
@@ -17,10 +17,10 @@
         <a href="admin-resume.php"><i class="far fa-address-card"></i>Resume</a>
       </li>
       <li>
-        <a href="admin-work.php"><i class="fas fa-briefcase"></i>works</a>
+      <a href="admin-blog.php"><i class="fas fa-blog"></i>Blog</a>
       </li>
       <li>
-        <a href="admin-blog.php"><i class="fas fa-blog"></i>Blog</a>
+        <a href="admin-blog.php"><i class="fas fa-phone"></i></i>contact</a>
       </li>
     </ul>
       <div class="burger">

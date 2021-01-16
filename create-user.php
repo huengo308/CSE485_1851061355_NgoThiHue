@@ -23,8 +23,12 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 1))
         height: auto;
         background-color: pink;
     }
+    .has-error{
+      color: red;
+    }
   </style>
     <?php
+    $err= [];
       if(isset($_POST["dangky"])){
         $fname = $_POST["fullname"];
         $birth = $_POST["birth"];
@@ -33,15 +37,41 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 1))
         $addr = $_POST["addr"];
         $username = $_POST["username"];
         $pass = $_POST["pwd"];
-        $rpass = $_POST["rpw"];
+        $rpass = $_POST["rpwd"];
         $error=[];
         if(empty($fname)){
-          $error["fullname"]="Bạn chưa điền họ tên!";
+          $err["fullname"]="Bạn chưa điền họ tên!";
         }
-        var_dump($error);
-        die();
-        $sql="INSERT INTO user(fullname, birthday, email, phone, address, username, password) VALUES('','','','','','','')";
+        if(empty($birth)){
+          $err["birth"] = "Bạn chưa điền ngày tháng năm sinh!";
       }
+      if(empty($email)){
+          $err["email"] = "Bạn chưa điền email!";
+      }
+      if(empty($phone)){
+          $err["phone"] = "Bạn chưa điền số điện thoại!";
+      }
+      if(empty($addr)){
+          $err["addr"] = "Bạn chưa điền địa chỉ!";
+      }
+      if(empty($username)){
+          $err["username"] = "Bạn chưa điền tên đăng nhập!";
+      }
+      if(empty($pass)){
+          $err["pwd"] = "Bạn chưa điền mật khẩu!";
+      }
+      if($pass != $rpass){
+          $err["rpwd"] = "Mật khẩu nhập lại chưa đúng!";
+      }
+      if(empty($err)){
+        $passw=password_hash($pass,PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users(fullname, birthday, email, phone, address, username, password) VALUES('$fname','$birth','$email','$phone','$addr','$username','$passw')";
+        $result =mysqli_query($conn, $sql);
+        if($result){
+            header('location: ql-user.php');
+        }
+      }
+    }
     ?>
     <div class="container">
         <div class="row">
@@ -51,40 +81,66 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 1))
         <h1 class=" text-center">Thêm mới người dùng</h1>
         <a class="btn btn-success" href="ql-user.php"><i class="fas fa-undo"></i>Quay lại</a>
       </div>
-      <div class="card-body font-weight-bold">
+      <div class="card-body">
+      <form action="" method="POST">
         <div class="form-group">
           <label for="">Họ tên</label>
           <input type="text" name="fullname" class="form-control" placeholder="" >
+          <div class="has-error">
+            <span> <?php echo (isset($err["fullname"]))? $err["fullname"]:''  ?> </span>
+          </div>
         </div>
         <div class="form-group">
           <label for="">Ngày sinh</label>
           <input type="date" name="birth" class="form-control" placeholder="" >
+          <div class="has-error">
+            <span> <?php echo (isset($err["birth"]))? $err["birth"]:''  ?> </span>
+          </div>
         </div>
         <div class="form-group">
           <label for="">Email</label>
           <input type="email" name="email" class="form-control" placeholder="" >
+          <div class="has-error">
+            <span> <?php echo (isset($err["email"]))? $err["email"]:''  ?> </span>
+          </div>
         </div>
         <div class="form-group">
           <label for="">Số điện thoại</label>
           <input type="text" name="phone"  class="form-control" placeholder="" >
+          <div class="has-error">
+            <span> <?php echo (isset($err["phone"]))? $err["phone"]:''  ?> </span>
+          </div>
         </div>
         <div class="form-group">
           <label for="">Địa chỉ</label>
           <input type="text" name="addr"  class="form-control" placeholder="" >
+          <div class="has-error">
+            <span> <?php echo (isset($err["addr"]))? $err["addr"]:''  ?> </span>
+          </div>
         </div>
         <div class="form-group">
           <label for="">Tên tài khoản</label>
           <input type="text" name="username"  class="form-control" placeholder="" >
+          <div class="has-error">
+            <span> <?php echo (isset($err["username"]))? $err["username"]:''  ?> </span>
+          </div>
         </div>
         <div class="form-group">
           <label for="">Mật khẩu</label>
-          <input type="text" name="pwd"  class="form-control" placeholder="" >
+          <input type="password" name="pwd"  class="form-control" placeholder="" >
+          <div class="has-error">
+            <span> <?php echo (isset($err["pwd"]))? $err["pwd"]:''  ?> </span>
+          </div>
         </div>
         <div class="form-group">
           <label for="">Nhập lại mật khẩu</label>
-          <input type="text" name="rpwd"  class="form-control" placeholder="" >
+          <input type="password" name="rpwd"  class="form-control" placeholder="" >
+          <div class="has-error">
+            <span> <?php echo (isset($err["rpwd"]))? $err["rpwd"]:''  ?> </span>
+          </div>
         </div>
         <button type="submit" class="btn btn-success" name="dangky">Đăng ký</button>
+        </form>
       </div>
       </div>
     </div>

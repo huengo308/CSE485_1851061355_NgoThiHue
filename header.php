@@ -17,10 +17,10 @@
             <a href="resume.php"><i class="far fa-address-card"></i>Resume</a>
           </li>
           <li>
-            <a href="work.php"><i class="fas fa-briefcase"></i>works</a>
+          <a href="blog.php"><i class="fas fa-blog"></i>Blog</a>
           </li>
           <li>
-            <a href="blog.php"><i class="fas fa-blog"></i>Blog</a>
+            <a href="blog.php"><i class="fas fa-phone"></i></i>contact</a>
           </li>
         </ul>
          <div class="burger">
