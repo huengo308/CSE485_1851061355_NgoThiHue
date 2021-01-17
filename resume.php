@@ -225,7 +225,7 @@
 }
 
 .time {
-  display: inline-block;
+  display: block;
   background: rgb(248, 248, 248);
 }
 
@@ -267,7 +267,7 @@
 
   .flag {
     background: rgb(255, 255, 255);
-    z-index: 0;
+
   }
 
   .direction-l .flag:before,
@@ -538,9 +538,7 @@ p[data-value]:after {
 
 
       </main>
-      <?php
-      include "footer.php";
-    ?>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

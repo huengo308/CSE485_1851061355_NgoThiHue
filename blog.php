@@ -76,31 +76,9 @@
 <br>
 <br>
 
-<?php
-  if(isset($_POST['search'])){
-    $name =$_POST['sear'];
-
-    $sqll="SELECT * FROM blog WHERE nhom like '%$name%'";
-    $queryy=mysqli_query($conn, $sqll);
-      $pos=mysqli_fetch_assoc($queryy);
-  }
-?>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-6">
-    <?php
-      echo '<h3>Kết quả tìm của "'.$name.'"</h3>';
-      ?>
-      <form class="form-inline my-2 my-lg-0" style="float:right;" method="POST">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" name="sear">
-        <button name="search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <?php
-        foreach($pos as $poss){
-         echo' <li style="list-style:none;"><h4><a href="mota.php?id='.$poss[0].'">'.$poss[1].'</a></h4></li>';
-        }
-      ?>
-		</div>
+
 		<div class="col-md-6">
     <?php
       $sql1="SELECT username, comment, ngayviet FROM comment,users WHERE users.id=comment.id_nguoiviet ORDER BY comment.id DESC";
@@ -122,9 +100,6 @@
 		</div>
 	</div>
 </div>
-<?php
-      include "footer.php";
-?>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
