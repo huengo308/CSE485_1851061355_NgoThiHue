@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/resume.css">
-    <link rel="stylesheet" href="css/admin-resume.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
   <body>
       <?php
@@ -494,9 +494,14 @@ p[data-value]:after {
             
           } ?>
           </div>
+          <?php
+        $sqlll = "SELECT * FROM works ORDER BY id DESC";
+        $result1 = mysqli_query($conn, $sqlll);
+        $rows1= mysqli_fetch_all($result1);
+      ?>
           <div class="col-12 col-lg-6">
           <h3><i class="fas fa-briefcase"></i> Work</h3> 
-          <?php foreach($rows as $row){
+          <?php foreach($rows1 as $row){
             echo '<ul class="timeline"> ';  
             echo ' <li>';
             echo '<div class="direction-r">';
@@ -504,7 +509,7 @@ p[data-value]:after {
             echo '<span class="flag">'.$row[1].'</span>';
             echo '<span class="time-wrapper"><span class="time">'.$row[2].'</span></span>';
             echo '</div>';
-            echo '<div class="desc">My current employment. Way better than the position before!</div>';
+            echo '<div class="desc">'.$row[3].'</div>';
             echo '</div>';
             echo '</li>';
             
@@ -533,6 +538,9 @@ p[data-value]:after {
 
 
       </main>
+      <?php
+      include "footer.php";
+    ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

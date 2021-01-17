@@ -31,7 +31,7 @@
             $phone =$_POST['sdt'];
             $dc =$_POST['dc'];
 
-            $sqll="UPDATE users SET fullname ='$fname', birth='$date', email = '$email', phone='$phone', address='$dc' WHERE id =1 ";
+            $sqll="UPDATE users SET fullname ='$fname', birthday='$date', email = '$email', phone='$phone', address='$dc' WHERE id =1 ";
             $result=mysqli_query($conn, $sqll);
 
             $sqlll="UPDATE introduce SET name ='$gt'";
@@ -69,7 +69,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Ngày sinh</label>
-                            <input type="date" name="date" id="" class="form-control" value="<?php echo $row['birth']; ?>">
+                            <input type="date" name="date" id="" class="form-control" value="<?php echo $row['birthday']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>

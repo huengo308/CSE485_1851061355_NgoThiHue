@@ -19,9 +19,6 @@
       <li>
       <a href="admin-blog.php"><i class="fas fa-blog"></i>Blog</a>
       </li>
-      <li>
-        <a href="admin-blog.php"><i class="fas fa-phone"></i></i>contact</a>
-      </li>
     </ul>
       <div class="burger">
         <i class="fas fa-bars"></i>

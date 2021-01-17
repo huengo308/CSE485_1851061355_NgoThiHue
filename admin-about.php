@@ -21,7 +21,6 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 1))
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/admin-about.css">
 </head>
 <style>
   .title{
@@ -79,13 +78,13 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 1))
 
             $sqledit = "UPDATE users SET avatar='$image' WHERE id = 1";
             $query1= mysqli_query($conn, $sqledit);
-            echo $sqledit;
             if($query1){
               header('Location: admin-about.php');
             }else{
               echo "loooiiiiii roiiiiii";
             }
           }
+
         }
         $sqlkn="SELECT * FROM introduce";
         $query2=mysqli_query($conn, $sqlkn);
@@ -121,12 +120,11 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 1))
           $q = mysqli_query($conn, $sqld);
           $rr = mysqli_fetch_all($q);
         ?>
-          <div class="container pb-0 pb-sm-2">
-            <h1 class="doing text-uppercase">What i'm doing <a href="adddoing.php"><i class="fas fa-plus">thêm</i></a></h1>
-            <div class="row">
-            <?php  
+        <div class="container">
+	        <div class="row">
+          <h1 class="doing text-uppercase text-center" style="float:right;">What i'm doing <a href="adddoing.php"><i class="fas fa-plus">thêm</i></a></h1>
+          <?php  
               foreach($rr as $ro){
-
              echo' <div class="col-12 col-lg-6">';
              echo'  <div class="case-item">';
              echo'  <div class="titlee text-center">';
@@ -137,12 +135,20 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 1))
              echo' </div>';
              echo'</div>';
             } ?>
+
+	      </div>
+      </div>
+          <!-- <div class="container pb-0 pb-sm-2">
+            <h1 class="doing text-uppercase">What i'm doing <a href="adddoing.php"><i class="fas fa-plus">thêm</i></a></h1>
+            <div class="row">
+   
             
           </div>
           </div>
       </div>
-      
+       -->
     </main>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

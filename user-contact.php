@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+          include "user-header.php";
 if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 0))
 { header("Location: login.php");
   exit();
@@ -23,9 +23,40 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 0))
     <link rel="stylesheet" href="css/work.css">
 </head>
   <body>
-      <?php
-        include "user-header.php";
-      ?>
+  <style>
+        body{
+            background: rgb(240, 222, 225);
+        }
+    </style>
+    <?php
+    ?>
+  <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h1 class="text-center text-uppercase font-italic font-weight-light">Contact me!</h1>
+                <form action="process-contact.php" method ="POST">
+                    <div class="form-group">
+                      <label for="">Tên của bạn</label>
+                      <input type="text" name="name" id="" class="form-control" placeholder="Nhập tên của bạn">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Số điện thoại</label>
+                      <input type="text" name="phone" id="" class="form-control" placeholder="Nhập số điện thoại" aria-describedby="helpId">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Email</label>
+                      <input type="email" name="email" id="" class="form-control" placeholder="Nhập email" aria-describedby="helpId">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Tin nhắn</label>
+                      <br>
+                      <textarea name="message" id="" cols="50" rows="10" placeholder="Viết tin nhắn"></textarea>
+                    </div>
+                    <button name="gui" type="submit" class="btn btn-primary">Gửi</button>
+                </form>
+              </div>
+          </div>
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

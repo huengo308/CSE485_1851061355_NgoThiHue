@@ -20,7 +20,7 @@
           <a href="blog.php"><i class="fas fa-blog"></i>Blog</a>
           </li>
           <li>
-            <a href="blog.php"><i class="fas fa-phone"></i></i>contact</a>
+            <a href="contact.php"><i class="fas fa-phone"></i></i>contact</a>
           </li>
         </ul>
          <div class="burger">

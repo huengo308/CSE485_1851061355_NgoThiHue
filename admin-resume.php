@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 1))
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/admin-resume.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/resume.css">
 </head>
 <style>
@@ -474,7 +474,7 @@ p[data-value]:after {
         include "admin-header.php";
       ?>
       <?php
-        $sql = "SELECT * FROM education";
+        $sql = "SELECT * FROM education ORDER BY id DESC";
         $result = mysqli_query($conn, $sql);
         $rows= mysqli_fetch_all($result);
       ?>
@@ -500,22 +500,28 @@ p[data-value]:after {
             echo '</li>';
             
           } ?>
+          <?php
+        $sqlll = "SELECT * FROM works ORDER BY id DESC";
+        $result1 = mysqli_query($conn, $sqlll);
+        $rows1= mysqli_fetch_all($result1);
+      ?>
           </div>
           <div class="col-12 col-lg-6">
           <h3><i class="fas fa-briefcase"></i> Work</h3> 
           <a href="addschool.php"><i class="fas fa-plus">thêm</i></a>
-          <?php foreach($rows as $row){
+          <?php foreach($rows1 as $row1){
+          
             echo '<ul class="timeline"> ';  
             echo ' <li>';
             echo '<div class="direction-r">';
             echo '<div class="flag-wrapper">';
-            echo '<span class="flag">'.$row[1].'</span>';
-            echo '<span class="time-wrapper"><span class="time">'.$row[2].'</span></span>';
+            echo '<span class="flag">'.$row1[1].'</span>';
+            echo '<span class="time-wrapper"><span class="time">'.$row1[2].'</span></span>';
+ 
             echo '</div>';
-            echo '<div class="desc">My current employment. Way better than the position before!</div>';
+            echo '<div class="desc">'.$row1[3].'</div>';
             echo '</div>';
             echo '</li>';
-            
           } ?>
           </div>
           </div>
@@ -528,7 +534,7 @@ p[data-value]:after {
           ?>
           <hr>
           <h3><i class="fas fa-tools"></i></i> My Skills</h3> 
-          <a href="addschool.php"><i class="fas fa-plus">thêm</i></a>
+          <a href="addskill.php"><i class="fas fa-plus">thêm</i></a>
           <?php foreach($rl as $rll){
           echo '<p style="width:'.$rll[2].'%" data-value="'.$rll[2].'">'.$rll[1].'</p>';
           echo '<progress max="100" value="'.$rll[2].'">';
@@ -538,10 +544,14 @@ p[data-value]:after {
           echo '</progress>';
         } ?>
         </div>
+
       </div>
 
 
       </main>
+      <?php
+      include "footer.php";
+    ?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

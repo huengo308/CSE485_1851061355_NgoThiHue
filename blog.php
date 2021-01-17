@@ -13,11 +13,119 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/blog.css">
 </head>
+  <style>
+    body{
+      background: rgb(240, 222, 225);
+    }
+    .title{
+      font-size: 350%;
+    }
+  </style>
     <?php
       include "header.php";
+      include "config.php";
+
+      $sql="SELECT username, nhom, ngayviet, anh, id_baiviet FROM blog, users where users.id = blog.id_tacgia";
+      $query=mysqli_query($conn, $sql);
+      $post_list=mysqli_fetch_all($query);
     ?>
+    <h1 class ="title text-center text-uppercase font-italic font-weight-light">My blogs</h1>
+    <div class="container-fluid" style="margin-top:5%;" >
+	    <div class="row">
+		    <div class="col-md-6 bg-white">
+        <div id="carouselExampleControls" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner">
+          <h1 class="text-center font-italic font-weight-light">Một số loại trái cây</h1>
+        <div class="carousel-item active">
+        <?php echo'<img class="d-block w-100" src="images/hoaqua.jpg"alt="">';?>
+        </div>
+        <?php foreach($post_list as $post){
+        echo '<div class="carousel-item">';
+        echo'<img class="d-block w-100" src="images/'.$post[3].'"alt="">';
+        echo '<div class="title">';
+          echo'<a href="mota.php?id='.$post[4].'"><h3 class= "font-italic">'.$post[1].'</h3></a>';
+          echo '<p><h4><i class="far fa-user"></i>'.$post[0].' &nbsp; <i class="far fa-calendar-alt"></i>'.$post[2].'</h4></p> ';
+        echo'</div>';
+        echo'</div>';
+      }?>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+        </div>
+		    </div>
+		    <div class="col-md-6">
+        <h1 class="text-center font-italic font-weight-light">Các nhóm hoa quả</h1>
+        <br>
+        <ul>
+          <?php
+          foreach($post_list as $post){
+            echo'<li style="list-style:none;"><h4 class= "text-center font-italic font-weight-light"><a href="mota.php?id='.$post[4].'">'.$post[1].'</a></h4></li>';
+            echo' <hr>';
+          }?>
+        </ul>
+		  </div>
+	  </div>
+</div>
+<br>
+<br>
+
+<?php
+  if(isset($_POST['search'])){
+    $name =$_POST['sear'];
+
+    $sqll="SELECT * FROM blog WHERE nhom like '%$name%'";
+    $queryy=mysqli_query($conn, $sqll);
+      $pos=mysqli_fetch_assoc($queryy);
+  }
+?>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+    <?php
+      echo '<h3>Kết quả tìm của "'.$name.'"</h3>';
+      ?>
+      <form class="form-inline my-2 my-lg-0" style="float:right;" method="POST">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" name="sear">
+        <button name="search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <?php
+        foreach($pos as $poss){
+         echo' <li style="list-style:none;"><h4><a href="mota.php?id='.$poss[0].'">'.$poss[1].'</a></h4></li>';
+        }
+      ?>
+		</div>
+		<div class="col-md-6">
+    <?php
+      $sql1="SELECT username, comment, ngayviet FROM comment,users WHERE users.id=comment.id_nguoiviet ORDER BY comment.id DESC";
+      $query1=mysqli_query($conn, $sql1);
+      $fet=mysqli_fetch_all($query1);
+    ?>
+		<div class="col-md-6">
+        <h5 class="font-weight-bold">Bình luận</h5>
+        <?php
+        foreach($fet as $fett){
+        echo'<div class="bl">';
+        echo'<h6 class="font-weight-bold font-italic">'.$fett[0].'</h6>';
+        echo'<p class="noidung">'.$fett[1].'</p>';
+        echo'<p class="font-italic font-weight-light">'.$fett[2].'</p>';
+        echo'<hr>';
+        echo'</div>';
+      }
+      ?>
+		</div>
+	</div>
+</div>
+<?php
+      include "footer.php";
+?>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

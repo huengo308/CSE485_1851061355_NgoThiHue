@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,7 +28,47 @@
   </style>
 
   <?php
-    if(isset($_POST['']))
+  include "config.php";
+    $err=[];
+    if(isset($_POST['send'])){
+        $email = $_POST['email'];
+
+        $sqll="SELECT * FROM users WHERE email = $email";
+        $queryy= mysqli_query($conn, $sqll);
+        $data = mysqli_fetch_assoc($queryy);
+        $checkemail= mysqli_num_rows($queryy);
+        if($checkemail ==1){
+                require_once("class.phpmailer.php");
+                require_once("class.smtp.php");
+                $mail=new PHPMailer();
+                $mail->SMTPDebug = 3;                                 
+                $mail->isSMTP();                                       
+                $mail->Host = 'smtp.gmail.com;';                       
+                $mail->SMTPAuth = true;                              
+                $mail->Username = 'hue2000tn@gmail.com';          
+                $mail->Password = 'spiaqyvsztijadei';                     
+                $mail->SMTPSecure = 'tls';                          
+                $mail->Port = 587;                                     
+                $mail->setFrom('hue2000tn@gmail.com', 'WebCV - Ngo Thi Hue');  
+                $mail->addAddress(''.$email.'');                 
+                $mail->addReplyTo(''.$email.'', 'Reset password');                        
+                $mail->isHTML(true);                                   
+                $mail->Subject = 'Reset password';  
+                $mail->Body  = 'bạn đã lấy lại mật khẩu bấm'.'<a href="#">vào đây</a>'.'để tiếp tục' ;  
+                if($mail->send()) {  
+                     echo 'Message has been sent';  
+                } else {  
+                    echo 'Message could not be sent';  
+                }  
+            } 
+            else {
+                $err['em']="Email không đúng!";
+            }
+
+        if(empty($email)){
+            $err['email']="Nhập email!";
+        }
+    }
   ?>
   <div class="container">
         <div class="row">
@@ -44,6 +86,9 @@
                                 <span> <?php echo (isset($err["email"]))? $err["email"]:''  ?> </span>
                             </div>
                         </div>
+                        <div class="has-error">
+                                <span> <?php echo (isset($err["em"]))? $err["em"]:''  ?> </span>
+                            </div>
                         <button name ="send" type="submit" class="btn btn-success">Gửi</button>
                         <p>Bạn chưa có tài khoản? <a href="register.php">Đăng ký.</a></p>
                         <p>Bạn đã có tài khoản? <a href="login.php">Đăng nhập.</a></p>

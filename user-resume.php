@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_level']) or ($_SESSION['user_level'] != 0))
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/admin-resume.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/resume.css">
 
 </head>
@@ -497,18 +497,23 @@ p[data-value]:after {
             echo '</li>';
             
           } ?>
+          <?php
+        $sqlll = "SELECT * FROM works ORDER BY id DESC";
+        $result1 = mysqli_query($conn, $sqlll);
+        $rows1= mysqli_fetch_all($result1);
+      ?>
           </div>
           <div class="col-12 col-lg-6">
           <h3><i class="fas fa-briefcase"></i> Work</h3> 
-          <?php foreach($rows as $row){
+          <?php foreach($rows1 as $row1){
             echo '<ul class="timeline"> ';  
             echo ' <li>';
             echo '<div class="direction-r">';
             echo '<div class="flag-wrapper">';
-            echo '<span class="flag">'.$row[1].'</span>';
-            echo '<span class="time-wrapper"><span class="time">'.$row[2].'</span></span>';
+            echo '<span class="flag">'.$row1[1].'</span>';
+            echo '<span class="time-wrapper"><span class="time">'.$row1[2].'</span></span>';
             echo '</div>';
-            echo '<div class="desc">My current employment. Way better than the position before!</div>';
+            echo '<div class="desc">'.$row1[3].'</div>';
             echo '</div>';
             echo '</li>';
             
@@ -525,6 +530,7 @@ p[data-value]:after {
           <hr>
           <h3><i class="fas fa-tools"></i></i> My Skills</h3> 
           <?php foreach($rl as $rll){
+            
           echo '<p style="width:'.$rll[2].'%" data-value="'.$rll[2].'">'.$rll[1].'</p>';
           echo '<progress max="100" value="'.$rll[2].'">';
           echo '<div class="progress-bar">';

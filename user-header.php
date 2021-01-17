@@ -23,7 +23,7 @@
           <a href="user-blog.php"><i class="fas fa-blog"></i>Blog</a>
           </li>
           <li>
-            <a href="user-blog.php"><i class="fas fa-phone"></i></i>contact</a>
+            <a href="user-contact.php"><i class="fas fa-phone"></i></i>contact</a>
           </li>
         </ul>
          <div class="burger">
