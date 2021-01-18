@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/resume.css">
     <link rel="stylesheet" href="css/header.css">
 </head>
@@ -225,7 +224,8 @@
 }
 
 .time {
-  display: block;
+  display: inline-block;
+  padding: 4px 6px;
   background: rgb(248, 248, 248);
 }
 
@@ -267,7 +267,7 @@
 
   .flag {
     background: rgb(255, 255, 255);
-
+    z-index: 15;
   }
 
   .direction-l .flag:before,
@@ -305,7 +305,7 @@
     display: block;
     position: relative;
     margin: 4px 0 0 0;
-    z-index: 0;
+    z-index: 14;
   }
 
   .direction-l .time-wrapper {

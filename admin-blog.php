@@ -64,7 +64,7 @@ $user = $_SESSION['user'];
         echo '<div class="carousel-item">';
         echo'<img class="d-block w-100" src="images/'.$post[3].'"alt="">';
         echo '<div class="title">';
-          echo'<a href="mota.php?id='.$post[4].'"><h3 class= "font-italic">'.$post[1].'</h3></a>';
+          echo'<a href="admin-mota.php?id='.$post[4].'"><h3 class= "font-italic">'.$post[1].'</h3></a>';
           echo '<p><h4><i class="far fa-user"></i>'.$post[0].' &nbsp; <i class="far fa-calendar-alt"></i>'.$post[2].'</h4></p> ';
         echo'</div>';
         echo'</div>';
@@ -86,7 +86,7 @@ $user = $_SESSION['user'];
         <ul>
           <?php
           foreach($post_list as $post){
-            echo'<li style="list-style:none;"><h4 class= "text-center font-italic font-weight-light"><a href="mota.php?id='.$post[4].'">'.$post[1].'</a></h4></li>';
+            echo'<li style="list-style:none;"><h4 class= "text-center font-italic font-weight-light"><a href="admin-mota.php?id='.$post[4].'">'.$post[1].'</a></h4></li>';
             echo' <hr>';
           }?>
         </ul>
